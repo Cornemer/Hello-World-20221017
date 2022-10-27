@@ -1,7 +1,9 @@
 //Global Variables
 int  appWidth, appHeight;
 float centerWidth, centerHeight, xStart, yStart, widthRect, heightRect;
-color black=#000000, white=#FFFFFF, yellow=#EFF022, purple=#A956D6;
+color black=#000000, white=#FFFFFF, blue=#61A0D6, purple=#D1A8ED;
+color yellowNightMode=#F8FC00, purpleNightMode=#FA0096;
+float thick, thin;
 //
 void setup() {
   //Declare Display Geometry; square, landscape, portrait
@@ -42,6 +44,8 @@ void setup() {
   yStart = centerHeight - ( appHeight * 1/4 ) ;;
   widthRect = appWidth * 1/2;
   heightRect = appHeight * 1/2;
+  thick = appWidth * 1/70;
+  thin = appWidth * 1/140;
 } //end setup
 //
 void draw() {
@@ -51,11 +55,13 @@ void draw() {
   //Night Mode
   background(black);
   //
-  stroke(purple);
-  fill(yellow);
+  strokeWeight(thick); //noStrokee()
+  stroke(purple);//purpleNightMode
+  fill(blue);//blueNightMode
   rect(xStart, yStart, widthRect, heightRect);
   fill(black);// Reset Default
-  stroke(black);
+  stroke(black);// Reset Default
+  strokeWeight(1);// reset Default
   {
    
   }
