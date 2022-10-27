@@ -1,5 +1,7 @@
 //Global Variables
 int  appWidth, appHeight;
+float centerWidth, centerHeight, xStart, yStart, widthRect, heightRect;
+color black=#000000, white=#FFFFFF, yellow=#EFF022, purple=#A956D6;
 //
 void setup() {
   //Declare Display Geometry; square, landscape, portrait
@@ -32,11 +34,28 @@ void setup() {
   //if (orientation==p) println(instruct);
   //
   //Fit CANVAS into Display Monitor
+  //
+  //Population
+  centerWidth = appWidth * 1/2;
+  centerHeight = appHeight * 1/2;
+  xStart = centerWidth - ( appWidth * 1/4 ) ;
+  yStart = centerHeight - ( appHeight * 1/4 ) ;;
+  widthRect = appWidth * 1/2;
+  heightRect = appHeight * 1/2;
 } //end setup
 //
 void draw() {
-  ellipse(960, 540, 1000, 1000);
-  square(540, 120, 840);
+  background(215); //Gray Scale 0-255
+  //random(a,b)
+  background( color( random(0,155), random(0,15), random(0, 55) ) ); //color(r,g,b),
+  //Night Mode
+  background(black);
+  //
+  stroke(purple);
+  fill(yellow);
+  rect(xStart, yStart, widthRect, heightRect);
+  fill(black);// Reset Default
+  stroke(black);
   {
    
   }
