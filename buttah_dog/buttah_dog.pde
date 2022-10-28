@@ -2,8 +2,9 @@
 int  appWidth, appHeight;
 float centerWidth, centerHeight, xStart, yStart, widthRect, heightRect;
 color black=#000000, white=#FFFFFF, blue=#61A0D6, purple=#D1A8ED;
-color yellowNightMode=#F8FC00, purpleNightMode=#FA0096;
+color blueNightMode=#F8FC00, purpleNightMode=#FA0096;
 float thick, thin;
+Boolean grayScale=false, randomColor=false, blackBackground=false, nightMode=false;
 //
 void setup() {
   //Declare Display Geometry; square, landscape, portrait
@@ -20,7 +21,7 @@ void setup() {
   String ls="Landscape or Square", p="portrait", DO="Display Orientation", instruct="what bizzare act is that canine preforming";
   //String orientation = ( appWidth >= appHeight ) ? ls : p;
   //println (DO, orientation);
-  if (appWidth < appHeight) { //Declare Landscape Mode
+  if ( appWidth < appHeight ) { //Declare Landscape Mode
     println(instruct);
   } else {
     if ( appWidth > displayWidth ) appWidth = 0; //Canvas-width will not fit
@@ -49,12 +50,24 @@ void setup() {
 } //end setup
 //
 void draw() {
-  background(215); //Gray Scale 0-255
+  if ( grayScale == true )background(215); //Gray Scale 0-255
   //random(a,b)
-  background( color( random(0,155), random(0,15), random(0, 55) ) ); //color(r,g,b),
+  if ( randomColor == true )background( color( random(0,155), random(0,15), random(0, 55) ) ); //color(r,g,b),
   //Night Mode
-  background(black);
+  if ( blackBackground = true )background(black);
   //
+  //Night Mode Decision
+  if ( nightMode == true ) 
+  {
+  stroke(purpleNightMode);
+  fill(blueNightMode);
+  } else 
+  {
+    stroke(purple);
+    fill(blue);
+  }
+  rect(xStart, yStart, widthRect, heightRect);
+  // Reset default
   strokeWeight(thick); //noStrokee()
   stroke(purple);//purpleNightMode
   fill(blue);//blueNightMode
