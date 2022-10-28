@@ -42,7 +42,8 @@ void setup() {
   centerWidth = appWidth * 1/2;
   centerHeight = appHeight * 1/2;
   xStart = centerWidth - ( appWidth * 1/4 ) ;
-  yStart = centerHeight - ( appHeight * 1/4 ) ;;
+  yStart = centerHeight - ( appHeight * 1/4 ) ;
+  ;
   widthRect = appWidth * 1/2;
   heightRect = appHeight * 1/2;
   thick = appWidth * 1/70;
@@ -52,15 +53,16 @@ void setup() {
 void draw() {
   if ( grayScale == true )background(215); //Gray Scale 0-255
   //random(a,b)
-  if ( randomColor == true )background( color( random(0,155), random(0,15), random(0, 55) ) ); //color(r,g,b),
+  if ( randomColor == true )background( color( random(0, 155), random(0, 15), random(0, 55) ) ); //color(r,g,b),
   //Night Mode
   if ( blackBackground = true )background(black);
   //
+  strokeWeight(thick); //noStrokee()
   //Night Mode Decision
   if ( nightMode == true ) 
   {
-  stroke(purpleNightMode);
-  fill(blueNightMode);
+    stroke(purpleNightMode);
+    fill(blueNightMode);
   } else 
   {
     stroke(purple);
@@ -76,14 +78,21 @@ void draw() {
   stroke(black);// Reset Default
   strokeWeight(1);// reset Default
   {
-   
   }
 } //End draw
 //
 void keyPressed() {
+  grayScale = false;
+  randomColor = false;
+  blackBackground = false;
+  if ( key=='A' || key=='a' ) grayScale = true;
+  if ( key=='S' || key=='s') randomColor = true;
+  if ( key=='W' || key=='w') blackBackground = true;
 } //End keyPressed
 //
 void mousePressed() {
+  if ( mouseButton == LEFT ) nightMode = true;
+  if ( mouseButton == RIGHT ) nightMode = false;
 } //End mousePressed
 //
 // End Main Program
